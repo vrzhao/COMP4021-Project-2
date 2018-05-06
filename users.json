@@ -1,0 +1,17 @@
+{
+    "vincent": {
+        "firstname": "Vincent",
+        "lastname": "Zhao",
+        "password": "xxxx"
+    },
+    "molly": {
+        "firstname": "Molly",
+        "lastname": "Hi",
+        "password": "1234"
+    },
+    "lowjin": {
+        "firstname": "Jin",
+        "lastname": "Low",
+        "password": "0000"
+    }
+}
