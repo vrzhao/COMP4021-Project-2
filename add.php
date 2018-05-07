@@ -6,7 +6,7 @@ echo "<?xml version=\"1.0\"?>\n";
 // Read the XML file into a DOM structure
 $xml = new DOMDocument();
 $xml->preserveWhiteSpace = false; // remove whitespace nodes 
-$xml->load("books.xml");
+$xml->load("book.xml");
 
 // Retrieve the GET request values
 $language    = $_GET["language"];
@@ -37,7 +37,7 @@ else {
     $book->appendXML("<book catagory=\"$catagory\"><title>$title</title><author>$author</author><image>$image</image></book>");
     $target->appendChild($pokemon);
 
-    $xml->save("books.xml");
+    $xml->save("book.xml");
 
     // Show success
     echo "<success/>";

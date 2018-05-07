@@ -4,7 +4,7 @@ header("content-type: text/xml");
 // Read the XML file into a DOM structure
 $xml = new DOMDocument();
 $xml->preserveWhiteSpace = false; // remove whitespace nodes 
-$xml->load("books.xml");
+$xml->load("book.xml");
 
 // Retrieve the GET request values
 $language = $_GET["language"];
