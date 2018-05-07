@@ -15,7 +15,6 @@
         $("#regForm").on("submit", function() {
             // Check for the availability of the username
             if ($("#unavailError").css('display') != "none") {
-                console.log("unavailError");
                 alert("Please try another username!");
                 $("#username").focus();
                 return false;
@@ -31,7 +30,6 @@
             // AJAX submit the form
             var query = $("#regForm").serialize();
             $.post("registeruser.php", query, function(data) {
-                console.log("registering");
                 if (data.error) {
                     $("#regError").text(data.error);
                     $("#regError").show();
