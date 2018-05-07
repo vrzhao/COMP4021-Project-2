@@ -3,7 +3,7 @@ session_start();
 
 // Check for the username session variable
 if (isset($_SESSION["username"])) {
-    header("Location: book.php");
+    header("Location: main.php");
     exit;
 }
 
@@ -18,7 +18,7 @@ if (isset($_SESSION["username"])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
     <script>
     $(document).ready(function() {
@@ -32,7 +32,7 @@ if (isset($_SESSION["username"])) {
                     $("#signinError").show();
                 }
                 else
-                    window.location = "book.php";
+                    window.location = "main.php";
             }, "json");
 
             return false;

@@ -1,3 +1,22 @@
+﻿<?php
+session_start();
+
+// Check for the username session variable
+if (!isset($_SESSION["username"])) {
+    header("Location: signin.php");
+    exit;
+}
+
+// Read the JSON file
+$users = file_get_contents("users.json");
+$users = json_decode($users, true);
+
+// Validate the user
+if (!array_key_exists($_SESSION["username"], $users)) {
+    header("Location: signin.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +27,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
     <script>
     $(document).ready(function() {
         $(window).on('hashchange', function() {
