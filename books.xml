@@ -32,6 +32,12 @@
 			<author>Brothers Grimm</author>
 			<image>https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Grimm%27s_Kinder-_und_Hausm%C3%A4rchen%2C_Erster_Theil_%281812%29.cover.jpg/220px-Grimm%27s_Kinder-_und_Hausm%C3%A4rchen%2C_Erster_Theil_%281812%29.cover.jpg</image>
 		</book>
+
+		<book category="Fiction">
+			<title>Der Zwillingseffekt: Roman</title>
+			<author>Tal M. Klein</author>
+			<image>https://images-na.ssl-images-amazon.com/images/I/41PClcdYFOL._SX326_BO1,204,203,200_.jpg</image>
+		</book>
 	</language>
 	<language language="italian">
 		<book category="Children">
@@ -46,6 +52,12 @@
 			<author>Victor Hugo</author>
 			<image>https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Jean_Valjean.JPG/220px-Jean_Valjean.JPG</image>
 		</book>
+
+		<book category="Cooking">
+			<title>Grand Livre Marabout de la Cuisine facile - 800 recettes</title>
+			<author>Collectif</author>
+			<image>https://images-na.ssl-images-amazon.com/images/I/51kxSkbabYL._SX374_BO1,204,203,200_.jpg</image>
+		</book>
 	</language>
 	<language language="korean">
 		<book category="Non-Fiction">
@@ -53,8 +65,20 @@
 			<author>Song-hee Kim</author>
 			<image>https://images-na.ssl-images-amazon.com/images/I/51Jcsj1HNJL._SX379_BO1,204,203,200_.jpg</image>
 		</book>
+
+		<book category="Non-Fiction">
+			<title>Apeunikka Cheongchun-ida</title>
+			<author>Kimnando</author>
+			<image>https://upload.wikimedia.org/wikipedia/ko/thumb/9/9a/%EC%95%84%ED%94%84%EB%8B%88%EA%B9%8C_%EC%B2%AD%EC%B6%98%EC%9D%B4%EB%8B%A4.jpg/200px-%EC%95%84%ED%94%84%EB%8B%88%EA%B9%8C_%EC%B2%AD%EC%B6%98%EC%9D%B4%EB%8B%A4.jpg</image>
+		</book>
 	</language>
 	<language language="japanese">
+		<book category="Children">
+			<title>Kimitachi wa dō ikiru ka</title>
+			<author>Yoshino genzaburō</author>
+			<image>https://images-na.ssl-images-amazon.com/images/I/61NVQjKu6fL._SX351_BO1,204,203,200_.jpg</image>
+		</book>
+
 		<book category="Fiction">
 			<title>Genji Monogatari</title>
 			<author>Murasaki Shikibu</author>
