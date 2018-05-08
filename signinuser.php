@@ -1,4 +1,14 @@
 <?php
+// Set functionality for 'Remember Me'
+if($_POST['remember']) {
+    setcookie('user_memory', $_POST['username'], time()+31540000);
+}
+elseif(!$_POST['remember']) {
+	if(isset($_COOKIE['user_memory'])) {
+		setcookie(user_memory, '', time()-100);
+	}
+}
+
 // Read the JSON file
 $users = file_get_contents("users.json");
 $users = json_decode($users, true);
