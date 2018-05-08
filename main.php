@@ -219,10 +219,10 @@ if (!array_key_exists($_SESSION["username"], $users)) {
             <label for="catagoryFilter">Catagory</label>
             <select required class="form-control" id="catagoryFilter" name="catagory">
               <option value="">- All -</option>
-              <option>Cooking</option>
-              <option>Children</option>
-              <option>Fiction</option>
-              <option>Non-Fiction</option>
+              <option value="Cooking">Cooking</option>
+              <option value="Children">Children</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Non-Fiction">Non-Fiction</option>
             </select>
           </div>
         </div>
@@ -263,11 +263,10 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 		<div class="form-group">
           <label for="catagory">Catagory</label>
           <select required class="form-control" id="catagory" name="catagory">
-            <option>Cooking</option>
-            <option>Children</option>
-            <option>Fiction</option>
-            <option>Non-Fiction</option>
-			<option>Educational</option>
+            <option value="Cooking">Cooking</option>
+            <option value="Children">Children</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
 		  </select>
         </div>
         <button type="submit" class="btn btn-primary">Add the Book</button>

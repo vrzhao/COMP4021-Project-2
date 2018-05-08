@@ -26,10 +26,11 @@ if ($catagory != null) {
     $catagories = $xml->getElementsByTagName("book");
     for ($i = $catagories->count() - 1; $i >= 0; $i--) {
         $node = $catagories->item($i);
-        if ($node->getAttribute("catagory") != $language) {
+        if ($node->getAttribute("catagory") != $catagory) {
             $node->parentNode->removeChild($node);
         }
     }
 }
+
 echo $xml->saveXML();
 ?>
