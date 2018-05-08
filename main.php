@@ -72,15 +72,8 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 
                         html += "<div class='name'>" + book.find("name").text() + "</div>";
 
-                        html += "<div class='authors'>";
-                        book.find("author").each(function(i, author) {
-                            if (i > 0) html += ", ";
-                            html += "<span class='author'>" + $(author).text() + "</span>";
-
-						html += "<div class='year'>" + book.find("year").text() + "</div>";
-
-						html += "<div class='price'>" + book.find("price").text() + "</div>";
-                        });
+						html += "<div class='author'>" + book.find("author").text() + "</div>";
+                        
                         html += "</div>";
 
                         html += "</div>";

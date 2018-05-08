@@ -1,31 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bookList>
 	<language language="english">
-		<book category="cooking">
+		<book category="Cooking">
 			<title>Everyday Italian</title>
 			<author>Giada De Laurentiis</author>
+			<image>https://images.gr-assets.com/books/1333576416l/2596537.jpg</image>
 		</book>
 
-		<book category="children">
+		<book category="Children">
 			<title>Harry Potter</title>
 			<author>J K. Rowling</author>
+			<image>https://images-na.ssl-images-amazon.com/images/I/51HSkTKlauL._SX346_BO1,204,203,200_.jpg</image>
 		</book>
 
-		<book category="Educational">
+		<book category="Non-Fiction">
 			<title>Learning XML</title>
 			<author>Erik T. Ray</author>
+			<image>https://covers.oreillystatic.com/images/9780596000462/lrg.jpg</image>
 		</book>
 	</language>
 	<language language="chinese">
+		<book category="Fiction">
+			<title>San Guo Yan Yi</title>
+			<author>Luo Guanzhong</author>
+			<image>https://pic1.zhimg.com/v2-66c1d7bd75cc8e082f114f97d4f7bcd0_qhd.jpg</image>
+		</book>
 	</language>
 	<language language="german">
+		<book category="Fiction">
+			<title>Kinder- und Hausmärchen</title>
+			<author>Brothers Grimm</author>
+			<image>https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Grimm%27s_Kinder-_und_Hausm%C3%A4rchen%2C_Erster_Theil_%281812%29.cover.jpg/220px-Grimm%27s_Kinder-_und_Hausm%C3%A4rchen%2C_Erster_Theil_%281812%29.cover.jpg</image>
+		</book>
 	</language>
 	<language language="Italian">
+		<book category="Children">
+			<title>Adriano, il Cane di Pompei</title>
+			<author>Matthew Frederick</author>
+			<image>https://images-na.ssl-images-amazon.com/images/I/51g1dPrECvL._SX391_BO1,204,203,200_.jpg</image>
+		</book>
 	</language>
-	<language language="frech">
+	<language language="french">
+		<book category="Fiction">
+			<title>Les Misérables</title>
+			<author>Victor Hugo</author>
+			<image>https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Jean_Valjean.JPG/220px-Jean_Valjean.JPG</image>
+		</book>
 	</language>
 	<language language="korean">
+		<book category="Non-Fiction">
+			<title>Sogang Korean 1A: Student's Book</title>
+			<author>Song-hee Kim</author>
+			<image>https://images-na.ssl-images-amazon.com/images/I/51Jcsj1HNJL._SX379_BO1,204,203,200_.jpg</image>
+		</book>
 	</language>
 	<language language="japanese">
+		<book category="Fiction">
+			<title>Genji Monogatari</title>
+			<author>Murasaki Shikibu</author>
+			<image>https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Tosa_Mitsuoki%E2%80%94Portrait_of_Murasaki_Shikibu.jpg/220px-Tosa_Mitsuoki%E2%80%94Portrait_of_Murasaki_Shikibu.jpg</image>
+		</book>
 	</language>
 </bookList>
