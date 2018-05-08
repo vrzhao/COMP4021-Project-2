@@ -159,9 +159,6 @@ if (!array_key_exists($_SESSION["username"], $users)) {
     .book .image {
         text-align: center;
     }
-    .book .authors {
-        text-align: center;
-    }
     .book .author {
         font-size: 90%;
         font-weight: bold;
@@ -238,8 +235,8 @@ if (!array_key_exists($_SESSION["username"], $users)) {
       <!-- Add the form for a new Pokémon here -->
       <form id="addForm">
         <div class="form-group">
-          <label for="Author">Author(s)</label>
-          <input type="text" required multiple class="form-control" id="Author" name="Author" placeholder="Enter Author">
+          <label for="author">Author</label>
+          <input type="text" required class="form-control" id="author" name="author" placeholder="Enter author">
         </div>
         <div class="form-group">
           <label for="title">Book Title</label>

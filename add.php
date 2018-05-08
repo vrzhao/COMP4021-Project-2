@@ -13,7 +13,7 @@ $language    = $_GET["language"];
 $title       = $_GET["title"];
 $image       = $_GET["imageAddress"];
 $author      = $_GET["author"];
-$catagory    = $_GET["catagory"];
+$category    = $_GET["category"];
 
 function validateFields() {
     global $xml, $title;
@@ -51,7 +51,7 @@ else {
 
     // Add the new book
     $book = $xml->createDocumentFragment();
-    $book->appendXML("<book catagory=\"$catagory\"><title>$title</title><author>$author</author><image>$image</image></book>");
+    $book->appendXML("<book category=\"$category\"><title>$title</title><author>$author</author><image>$image</image></book>");
     $target->appendChild($book);
 
     $xml->save("books.xml");
