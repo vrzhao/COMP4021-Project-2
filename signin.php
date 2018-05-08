@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-// Check for the username session variable
-// temporarily commenting out due to "localhost redirected you too many times."
-//if (isset($_SESSION["username"])) {
-//    header("Location: main.php");
-//    exit;
-//}
+if (isset($_SESSION["username"])) {
+    header("Location: main.php");
+    exit;
+}
 
 ?>
 <!DOCTYPE html>
@@ -72,6 +70,7 @@ session_start();
               <input type="password" required class="form-control" id="password" name="password" placeholder="Password">
             </div>
           </div>
+          <input type="checkbox" name="remember" value="1">Remember Me
           <div class="g-recaptcha" data-sitekey="6LdslVcUAAAAAKkrGaqQT_y3E-HIpTa_dSNh4IF_" style="transform:scale(0.9);transform-origin:0;-webkit-transform:scale(0.9);
 transform:scale(0.9);-webkit-transform-origin:0 0;transform-origin:0 0;"></div>
           <div class="form-group text-center">

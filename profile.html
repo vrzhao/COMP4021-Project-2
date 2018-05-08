@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>Edit Profile</title>
@@ -72,113 +72,114 @@
     </script>
 </head>
 <body class="bg-info p-5">
-  <div class="container rounded bg-white" style="width: 60rem">
-    <div class="row">
-      <div class="col p-3 text-center">
-        <h4>Edit Profile</h4>
-      </div>
-    </div>
-
-    <div class="row">
-    <div class="col-3 p-3 text-center">
-      <h4>pic here</h4>
-    </div>
-
-    <div class="col-9 p-3">
-    <div class="row">
-      <div class="col px-4">
-        <div id="success" style="display: none">
-          <div class="form-group text-success text-center">
-            <i class="fas fa-check"></i> <span>Registration successful!</span>
-          </div>
-          <div class="form-group text-success text-center">
-            <button id="mainButton" class="btn btn-primary">
-              Go to the Main Page</button>
-          </div>
+    <div class="container rounded bg-white" style="width: 60rem">
+        <div class="row">
+            <div class="col p-3 text-center">
+                <h4>Edit Profile</h4>
+            </div>
         </div>
 
-        <form id="regForm">
-          <div class="form-row">
-            <div class="col-6">
-              <label for="username">Username</label>
+        <div class="row">
+            <div class="col-3 p-3 text-center">
+                <img src="profile_image.png">
+                <input type="file" name="profilepic" id="profilepic">
             </div>
-          </div>
-          <div class="form-row">
-            <div class="col-6 form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-user"></i></div>
-                </div>
-                <input type="text" required class="form-control" id="username" name="username" placeholder="Username">
-              </div>
-            </div>
-            <div id="unavailError" class="col-6 form-text text-danger" style="display: none">
-              <small><i class="fas fa-times"></i> The username is not available.</small>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col form-group">
-              <label for="firstname">First name</label>
-              <input type="text" required class="form-control" id="firstname" name="firstname" placeholder="First Name">
-            </div>
-            <div class="col form-group">
-              <label for="lastname">Last name</label>
-              <input type="text" required class="form-control" id="lastname" name="lastname" placeholder="Last Name">
-            </div>
-          </div>
 
-          <div class="form-row">
-            <div class="col form-group">
-              <label for="email">Email</label>
-              <!--input type="email" required class="form-control" id="email" name="email" placeholder="Email"-->
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-envelope"></i></div>
-                </div>
-                <input type="email" required class="form-control" id="email" name="email" placeholder="Email">
-              </div>
-            </div>
-            <div class="col form-group">
-              <label for="company">Company/School</label>
-              <input type="text" required class="form-control" id="company" name="company" placeholder="Company/School">
-            </div>
-          </div>
+            <div class="col-9 p-3">
+                <div class="row">
+                    <div class="col px-4">
+                        <div id="success" style="display: none">
+                            <div class="form-group text-success text-center">
+                                <i class="fas fa-check"></i> <span>Registration successful!</span>
+                            </div>
+                            <div class="form-group text-success text-center">
+                                <button id="mainButton" class="btn btn-primary">
+                                    Go to the Main Page
+                                </button>
+                            </div>
+                        </div>
 
-          <div class="form-row">
-            <div class="col form-group">
-              <label for="password">Password</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-key"></i></div>
-                </div>
-                <input type="password" required class="form-control" id="password" name="password" placeholder="Password">
-              </div>
-            </div>
-            <div class="col form-group">
-              <label for="confirm">Confirm Password</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"><i class="fas fa-key"></i></div>
-                </div>
-                <input type="password" required class="form-control" id="confirm" name="confirm" placeholder="Confirm Password">
-              </div>
-            </div>
-          </div>
+                        <form id="regForm">
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label for="username">Username</label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-6 form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-user"></i></div>
+                                        </div>
+                                        <input type="text" required class="form-control" id="username" name="username" placeholder="Username">
+                                    </div>
+                                </div>
+                                <div id="unavailError" class="col-6 form-text text-danger" style="display: none">
+                                    <small><i class="fas fa-times"></i> The username is not available.</small>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label for="firstname">First name</label>
+                                    <input type="text" required class="form-control" id="firstname" name="firstname" placeholder="First Name">
+                                </div>
+                                <div class="col form-group">
+                                    <label for="lastname">Last name</label>
+                                    <input type="text" required class="form-control" id="lastname" name="lastname" placeholder="Last Name">
+                                </div>
+                            </div>
 
-          <div class="form-group text-center pt-2">
-            <button type="submit" name="register" class="btn btn-primary"><i class="fas fa-clipboard-list mr-2"></i> Save Changes | Cancel </button>
-          </div>
-          <div class="form-row pb-2">
-              <div id="regError" class="col form-group text-center text-danger" style="display: none">
-                <i class="fas fa-times"></i> <span>Registration error!</span>
-              </div>
-          </div>
-        </form>        
-      </div>
-    </div>
-    </div>
-    </div>
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label for="email">Email</label>
+                                    <!--input type="email" required class="form-control" id="email" name="email" placeholder="Email"-->
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+                                        </div>
+                                        <input type="email" required class="form-control" id="email" name="email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col form-group">
+                                    <label for="company">Company/School</label>
+                                    <input type="text" required class="form-control" id="company" name="company" placeholder="Company/School">
+                                </div>
+                            </div>
 
-  </div>
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label for="password">Password</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-key"></i></div>
+                                        </div>
+                                        <input type="password" required class="form-control" id="password" name="password" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col form-group">
+                                    <label for="confirm">Confirm Password</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-key"></i></div>
+                                        </div>
+                                        <input type="password" required class="form-control" id="confirm" name="confirm" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group text-center pt-2">
+                                <button type="submit" name="register" class="btn btn-primary"><i class="fas fa-clipboard-list mr-2"></i> Save Changes | Cancel </button>
+                            </div>
+                            <div class="form-row pb-2">
+                                <div id="regError" class="col form-group text-center text-danger" style="display: none">
+                                    <i class="fas fa-times"></i> <span>Registration error!</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
 </body>
 </html>
