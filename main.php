@@ -82,7 +82,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 
 						html += "		";
 
-						html += "<span><a class='delete' href=#>delete</a></span>";
+						html += "<span><a class='delete' href=#delete>delete</a></span>";
 
 						html += "</div>";
 
@@ -96,6 +96,8 @@ if (!array_key_exists($_SESSION["username"], $users)) {
                     alert("Unknown error!");
                 });
         });
+
+
 
         $("#listForm select:first").trigger("change");
 
