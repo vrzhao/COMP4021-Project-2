@@ -45,11 +45,13 @@ if (!array_key_exists($_SESSION["username"], $users)) {
                 $("#addPage").show();
                 break;
 			case "#user":
-				$("#userPage").show();
+				window.location = "profile.html";
                 break;
 			case "#signout":
 				window.location = "signout.php";
 				break;
+			case "#edit":
+				$("#editPage").show();
             }
         });
 
@@ -74,7 +76,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 
 						html += "<div class='author'>" + book.find("author").text() + "</div>";
 
-						html += "<div><a class='edit' href=#>edit</a></div>";
+						html += "<div><a class='edit' href=#edit>edit</a></div>";
 
 						html += "<div><a class='delete' href=#>delete</a></div>";
 
@@ -90,23 +92,6 @@ if (!array_key_exists($_SESSION["username"], $users)) {
                     alert("Unknown error!");
                 });
         });
-
-		$("#listForm").on("edit", function() {
-			var query = $("#listForm").serialize();
-
-			$.get("edit.php", query, function(data) {
-				
-			});
-		});
-
-		$("#listForm").on("delete", function() {
-			var query = $("#listForm").serialize();
-
-			$.get("delete.php", query, function(data) {
-				
-			});
-		});
-
 
         $("#listForm select:first").trigger("change");
 
@@ -267,6 +252,48 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 		  </select>
         </div>
         <button type="submit" class="btn btn-primary">Add the Book</button>
+      </form>
+    </div>
+
+	    <!-- This is the edit page -->
+    <div id="editPage" class="container page pb-3" style="display: none">
+      <h2>Adding a New Book</h2>
+
+      <!-- Add the form for a new Pokémon here -->
+      <form id="editForm">
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" required class="form-control" id="author" name="author" placeholder="Enter author">
+        </div>
+        <div class="form-group">
+          <label for="title">Book Title</label>
+          <input type="text" required class="form-control" id="title" name="title" placeholder="Enter book title">
+        </div>
+        <div class="form-group">
+          <label for="imageAddress">Image address</label>
+          <input type="url" required class="form-control" id="imageAddress" name="imageAddress" placeholder="Enter image address">
+        </div>
+        <div class="form-group">
+          <label for="language">Language</label>
+          <select required class="form-control" id="language" name="language">
+			<option value="english">English</option>
+			<option value="chinese">Chinese</option>
+			<option value="german">German</option>
+			<option value="italian">Italian</option>
+			<option value="french">French</option>
+			<option value="korean">Korean</option>
+			<option value="japanese">Japnese</option>
+		  </select>
+		<div class="form-group">
+          <label for="category">Category</label>
+          <select required class="form-control" id="category" name="category">
+            <option value="Cooking">Cooking</option>
+            <option value="Children">Children</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+		  </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit the Book</button>
       </form>
     </div>
 </body>
