@@ -15,6 +15,23 @@ $image       = $_GET["imageAddress"];
 $author      = $_GET["author"];
 $catagory    = $_GET["catagory"];
 
+function validateFields() {
+    global $xml, $title;
+
+    // Check if the name has been taken
+    $titles = $xml->getElementsByTagName("title");
+    foreach ($titles as $node) {
+        if ($node->nodeValue == trim($title)) {
+            return "Name already exists!";
+        }
+    }
+
+    return null;
+}
+
+// Validate the two fields: national number and name
+$error = validateFields();
+
 
 // Show the error or add the new book
 if ($error != null) {
