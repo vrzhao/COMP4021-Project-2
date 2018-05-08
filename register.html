@@ -29,7 +29,10 @@
 
             // AJAX submit the form
             var query = $("#regForm").serialize();
+            //console.log(query);
             $.post("registeruser.php", query, function(data) {
+                console.log("data is here");
+
                 if (data.error) {
                     $("#regError").text(data.error);
                     $("#regError").show();

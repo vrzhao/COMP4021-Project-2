@@ -1,4 +1,7 @@
 <?php
+// Declare that you output JSON content
+header("Content-Type: application/json");
+
 // Read the JSON file
 $users = file_get_contents("users.json");
 $users = json_decode($users, true);
@@ -11,17 +14,19 @@ $password = $_POST["password"];
 $confirm = $_POST["confirm"];
 
 // Check the username
-if (array_key_exists($username, $users))
+if (array_key_exists($username, $users)) {
     $output["error"] = "Duplicate username exists!";
+}
 
 // Check all fields
-elseif (empty($username) || empty($firstname) ||
-        empty($lastname) || empty($password))
+elseif (empty($username) || empty($firstname) || empty($lastname) || empty($password)) {
     $output["error"] = "Not all data has been submitted!";
+}
 
 // Check all fields
-elseif ($password != $confirm)
+elseif ($password != $confirm) {
     $output["error"] = "Passwords do not match!";
+}
 
 // Add the user
 else {
@@ -38,8 +43,6 @@ else {
 
     $output["success"] = "";
 }
-
-header("content-type: application/json");
 
 print json_encode($output);
 ?>

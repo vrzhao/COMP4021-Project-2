@@ -2,10 +2,11 @@
 session_start();
 
 // Check for the username session variable
-if (isset($_SESSION["username"])) {
-    header("Location: main.php");
-    exit;
-}
+// temporarily commenting out due to "localhost redirected you too many times."
+//if (isset($_SESSION["username"])) {
+//    header("Location: main.php");
+//    exit;
+//}
 
 ?>
 <!DOCTYPE html>
