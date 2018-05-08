@@ -266,7 +266,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 
 	    <!-- This is the edit page -->
     <div id="editPage" class="container page pb-3" style="display: none">
-      <h2>Adding a New Book</h2>
+      <h2>Editing an existing book</h2>
 
       <!-- Add the form for a new Pokémon here -->
       <form id="editForm">
