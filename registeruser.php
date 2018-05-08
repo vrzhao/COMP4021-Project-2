@@ -13,6 +13,10 @@ $lastname = trim($_POST["lastname"]);
 $password = $_POST["password"];
 $confirm = $_POST["confirm"];
 
+// additional data
+$email = trim($_POST["email"]);
+$company = trim($_POST["company"]);
+
 // reCAPTCHA verification
 $response =  $_POST["g-recaptcha-response"];
 $secret = "6LdslVcUAAAAAC7HGIHBiLLhwySw5EK_o7Yaauy3";
@@ -46,6 +50,10 @@ else {
     $users[$username]["firstname"] = $firstname;
     $users[$username]["lastname"] = $lastname;
     $users[$username]["password"] = $password;
+
+    // additional data
+    $users[$username]["email"] = $email;
+    $users[$username]["company"] = $company;
 
     file_put_contents("users.json", json_encode($users, JSON_PRETTY_PRINT));
 
