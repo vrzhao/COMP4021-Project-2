@@ -76,11 +76,15 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 
 						html += "<div class='author'>" + book.find("author").text() + "</div>";
 
-						html += "<div><a class='edit' href=#edit>edit</a></div>";
+						html += "<div class='edit'>";
 
-						html += "<div><a class='delete' href=#>delete</a></div>";
+						html += "<span><a class='edit' href=#edit>edit</a></span>";
 
-                        html += "</div>";
+						html += "		";
+
+						html += "<span><a class='delete' href=#>delete</a></span>";
+
+						html += "</div>";
 
                         html += "</div>";
                     });
@@ -135,7 +139,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
     .book {
         padding: 1em;
     }
-    .book .name {
+    .book .title {
         text-align: center;
         font-size: 120%;
         font-weight: bold;
@@ -145,9 +149,14 @@ if (!array_key_exists($_SESSION["username"], $users)) {
         text-align: center;
     }
     .book .author {
-        font-size: 90%;
+		text-align: center;
+        font-size: 90%; 
         font-weight: bold;
     }
+	.book .edit{
+		text-align: center;
+    }
+
     </style>
 </head>
 <body>
