@@ -16,21 +16,15 @@ $confirm = $_POST["confirm"];
 // additional data
 $email = trim($_POST["email"]);
 $company = trim($_POST["company"]);
-
-// reCAPTCHA verification
-$response =  $_POST["g-recaptcha-response"];
-$secret = "6LdslVcUAAAAAC7HGIHBiLLhwySw5EK_o7Yaauy3";
-$url = "https://www.google.com/recaptcha/api/siteverify";
-$verify = file_get_contents($url."?secret=".$secret."&response=".$response);
-$result = json_decode($verify);
+$oldusername = trim($_POST["oldusername"]);
 
 // Check the username
-if (array_key_exists($username, $users)) {
+if ($username != $oldusername && array_key_exists($username, $users)) {
     $output["error"] = "Duplicate username exists!";
 }
 
 // Check all fields
-elseif (empty($username) || empty($firstname) || empty($lastname) || empty($email) || empty($company) || empty($password)) {
+elseif (empty($username) || empty($firstname) || empty($lastname) || empty($email) || empty($company)) {
     $output["error"] = "Not all data has been submitted!";
 }
 
@@ -39,17 +33,22 @@ elseif ($password != $confirm) {
     $output["error"] = "Passwords do not match!";
 }
 
-// check recaptcha
-elseif (!$result->success) {
-    $output["error"] = "reCAPTCHA verification error!";
-} 
-
 // Add the user
 else {
+    // change username only if it's been modified
+    if ($username != $oldusername) {
+        $users[$username] = $users[$oldusername];
+        unset($users[$oldusername]);
+    }
+
     // Add the user to the JSON object and save it
     $users[$username]["firstname"] = $firstname;
     $users[$username]["lastname"] = $lastname;
-    $users[$username]["password"] = $password;
+
+    // change password only if fields were not empty
+    if (!empty($password)) {
+        $users[$username]["password"] = $password;
+    }
 
     // additional data
     $users[$username]["email"] = $email;

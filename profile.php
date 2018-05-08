@@ -36,6 +36,9 @@ $username = $_SESSION["username"];
 
     <script>
     $(document).ready(function() {
+        // not require password
+        document.getElementById("password").removeAttribute("required");
+        document.getElementById("confirm").removeAttribute("required");
 
         // Validate and submit the form
         $("#regForm").on("submit", function() {
@@ -55,16 +58,16 @@ $username = $_SESSION["username"];
 
             // AJAX submit the form
             var query = $("#regForm").serialize();
-            //console.log(query);
-            $.post("registeruser.php", query, function(data) {
-
+            var queryplus = query + "&oldusername=" + "<?php echo $username; ?>";
+            console.log(queryplus);
+            $.post("savechanges.php", queryplus, function(data) {
+                //window.location = "main.php";
                 if (data.error) {
                     $("#regError").text(data.error);
                     $("#regError").show();
                 }
                 else {
-                    //$("#success").show();
-                    //$("#regForm").hide();
+                    window.location = "main.php";
                 }
             }, "json");
 
@@ -76,8 +79,8 @@ $username = $_SESSION["username"];
             // Hide the error
             $("#unavailError").hide();
 
-            // Show the error if it is not available
-            if ($("#username").val() != "") {
+            // Show the error if it is not available and not equal to old name
+            if ($("#username").val() != "" && $("#username").val() != "<?php echo $username; ?>") {
                 var query = "username=" + encodeURIComponent($("#username").val());
                 $.getJSON("checkusername.php", query, function(data) {
                     if (data.available == "no")
@@ -122,7 +125,7 @@ $username = $_SESSION["username"];
   <div class="container rounded bg-white" style="width: 60rem">
     <div class="row row-bordered">
       <div class="col p-3 text-left">
-        <h3>Edit Profile</h3>
+        <h3><?php echo $username; ?>'s Profile</h3>
       </div>
     </div>
 
@@ -193,7 +196,7 @@ $username = $_SESSION["username"];
           </div>
 
           <div class="alert alert-info alert-dismissible fade show" role="alert">
-            Leave the password fields below blank if there's no change
+            Leave the password fields below blank if there's no change in password
             <!--button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button-->
           </div>
 
@@ -204,7 +207,7 @@ $username = $_SESSION["username"];
                 <div class="input-group-prepend">
                   <div class="input-group-text"><i class="fas fa-key"></i></div>
                 </div>
-                <input type="password" required class="form-control" id="password" name="password" placeholder="New Password">
+                <input type="password" required class="form-control" id="password" name="password" placeholder="New Password" formnovalidate>
               </div>
             </div>
             <div class="col form-group">
@@ -213,9 +216,15 @@ $username = $_SESSION["username"];
                 <div class="input-group-prepend">
                   <div class="input-group-text"><i class="fas fa-key"></i></div>
                 </div>
-                <input type="password" required class="form-control" id="confirm" name="confirm" placeholder="Confirm Password">
+                <input type="password" required class="form-control" id="confirm" name="confirm" placeholder="Confirm Password" formnovalidate>
               </div>
             </div>
+          </div>
+
+          <div class="form-row pb-2">
+              <div id="regError" class="col form-group text-center text-danger" style="display: none">
+                <i class="fas fa-times"></i> <span>Error: please recheck the above info</span>
+              </div>
           </div>
 
           <div class="form-row">
@@ -226,12 +235,7 @@ $username = $_SESSION["username"];
               <button type="button" name="cancel" class="btn btn-secondary" onclick="window.location.replace('main.php')"> Cancel </button>
             </div>
           </div>
-
-          <div class="form-row pb-2">
-              <div id="regError" class="col form-group text-center text-danger" style="display: none">
-                <i class="fas fa-times"></i> <span>Error: please recheck the above info</span>
-              </div>
-          </div>
+ 
         </form>        
       </div>
     </div>
