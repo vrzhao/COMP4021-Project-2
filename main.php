@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 
 // Check for the username session variable
@@ -70,18 +70,13 @@ if (!array_key_exists($_SESSION["username"], $users)) {
                             html += "<div class='image'><img src='" + book.find("image").text() + "' class='w-75' alt='Image'></div>";
                         }
 
-                        html += "<div class='name'>" + book.find("name").text() + "</div>";
+                        html += "<div class='title'>" + book.find("title").text() + "</div>";
 
-                        html += "<div class='authors'>";
-                        book.find("author").each(function(i, author) {
-                            if (i > 0) html += ", ";
-                            html += "<span class='author'>" + $(author).text() + "</span>";
+                        html += "<div class='authors'>" + book.find("author").text() + "</div>" ;
 
-						html += "<div class='year'>" + book.find("year").text() + "</div>";
+						html += "<div class='year'>" + "Year Published: " + book.find("year").text() + "</div>";
 
-						html += "<div class='price'>" + book.find("price").text() + "</div>";
-                        });
-                        html += "</div>";
+						html += "<div class='price'>" + "Price: " + book.find("price").text() + "</div>";
 
                         html += "</div>";
                     });
@@ -136,7 +131,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
     .book {
         padding: 1em;
     }
-    .book .name {
+    .book .title {
         text-align: center;
         font-size: 120%;
         font-weight: bold;
@@ -151,6 +146,14 @@ if (!array_key_exists($_SESSION["username"], $users)) {
     .book .author {
         font-size: 90%;
         font-weight: bold;
+    }
+    .book .year {
+        text-align: center;
+        font-size: 90%;
+    }
+    .book .price {
+        text-align: center;
+        font-size: 90%;
     }
     </style>
 </head>
@@ -199,12 +202,12 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 			  <option>French</option>
 			  <option>Spanish</option>
 			  <option>Korean</option>
-			  <option>Japnese</option>
+			  <option>Japanese</option>
             </select>
           </div>
 		  <div class="form-group col-6 col-md-4 col-lg-3">
-            <label for="catagoryFilter">Catagory</label>
-            <select required class="form-control" id="catagoryFilter" name="catagory">
+            <label for="categoryFilter">Category</label>
+            <select required class="form-control" id="categoryFilter" name="category">
               <option value="">- All -</option>
               <option>Cooking</option>
               <option>Children</option>
@@ -222,11 +225,11 @@ if (!array_key_exists($_SESSION["username"], $users)) {
     <div id="addPage" class="container page pb-3" style="display: none">
       <h2>Adding a New Book</h2>
 
-      <!-- Add the form for a new Pokémon here -->
+      <!-- Add the form for a new Book here -->
       <form id="addForm">
         <div class="form-group">
           <label for="Author">Author(s)</label>
-          <input type="text" required multiple class="form-control" id="Author" name="Author" placeholder="Enter Author">
+          <input type="text" required multiple class="form-control" id="Author" name="author" placeholder="Enter Author">
         </div>
         <div class="form-group">
           <label for="title">Book Title</label>
@@ -246,11 +249,11 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 			<option>French</option>
 			<option>Spanish</option>
 			<option>Korean</option>
-			<option>Japnese</option>
+			<option>Japanese</option>
 		  </select>
 		<div class="form-group">
-          <label for="catagory">Catagory</label>
-          <select required class="form-control" id="catagory" name="catagory">
+          <label for="category">Category</label>
+          <select required class="form-control" id="catagory" name="category">
             <option>Cooking</option>
             <option>Children</option>
             <option>Fiction</option>

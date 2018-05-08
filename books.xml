@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bookList>
-	<language language="english">
-		<book category="cooking">
+	<language lang="english">
+		<book lang="eng">
 			<title>Everyday Italian</title>
+      <image>http://t3.gstatic.com/images?q=tbn:ANd9GcTT1U-JvaYhs61g6ThhRYuyD2rYsh40AR0lgCTkjKDUnenIw782</image>
 			<author>Giada De Laurentiis</author>
+      <year>1991</year>
+      <price>$100</price>
+      <category>cooking</category>
 		</book>
 
-		<book category="children">
+		<book lang="eng">
 			<title>Harry Potter</title>
+      <image>https://images.pottermore.com/bxd3o8b291gf/3SQ3X2km8wkQIsQWa02yOY/25f258f21bdbe5f552a4419bb775f4f0/HarryPotter_WB_F4_HarryPotterMidshot_Promo_080615_Port.jpg?w=1024</image>
 			<author>J K. Rowling</author>
+      <year>1991</year>
+      <price>$100</price>
+      <category>fantasy</category>
 		</book>
 
-		<book category="Educational">
+		<book lang="eng">
 			<title>Learning XML</title>
+      <image>https://images.gr-assets.com/books/1434491431l/231160.jpg</image>
 			<author>Erik T. Ray</author>
+      <year>1991</year>
+      <price>$100</price>
+      <category>educational</category>
 		</book>
 	</language>
-	<language language="chinese">
+	<language lang="chinese">
 	</language>
-	<language language="german">
+	<language lang="german">
 	</language>
-	<language language="Italian">
+	<language lang="Italian">
 	</language>
-	<language language="frech">
+	<language lang="french">
 	</language>
-	<language language="korean">
+	<language lang="korean">
 	</language>
-	<language language="japanese">
+	<language lang="japanese">
 	</language>
 </bookList>

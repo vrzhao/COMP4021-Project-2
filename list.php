@@ -8,7 +8,7 @@ $xml->load("books.xml");
 
 // Retrieve the GET request values
 $language = $_GET["language"];
-$catagory = $_GET["catagory"];
+$category = $_GET["category"];
 
 // Remove the non-matching languages
 if ($language != null) {
@@ -22,11 +22,26 @@ if ($language != null) {
 }
 
 // Remove the non-matching catagories
-if ($catagory != null) {
-    $catagories = $xml->getElementsByTagName("book");
-    for ($i = $catagories->count() - 1; $i >= 0; $i--) {
-        $node = $catagories->item($i);
-        if ($node->getAttribute("catagory") != $language) {
+/*if ($category != null) {
+    $categories = $xml->getElementsByTagName("book");
+    for ($i = $categories->count() - 1; $i >= 0; $i--) {
+        $node = $categories->item($i);
+        if ($node->getAttribute("category") != $book) {
+            $node->parentNode->removeChild($node);
+        }
+    }
+}*/
+if ($category != null) {
+    $books = $xml->getElementsByTagName("book");
+    for ($i = $books->count() - 1; $i >= 0; $i--) {
+        $node = $books->item($i);
+
+        $found = false;
+        $categories = $node->getElementsByTagName("category");
+        foreach ($categories as $categoryNode) {
+            if ($categoryNode->nodeValue == $category) $found = true;
+        }
+        if (!$found) {
             $node->parentNode->removeChild($node);
         }
     }

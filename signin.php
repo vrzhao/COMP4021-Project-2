@@ -27,6 +27,7 @@ if (isset($_SESSION["username"])) {
             // AJAX submit the form
             var query = $("#signinForm").serialize();
             $.post("signinuser.php", query, function(data) {
+                grecaptcha.reset();
                 if (data.error) {
                     $("#signinError").text(data.error);
                     $("#signinError").show();
