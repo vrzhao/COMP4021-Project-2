@@ -8,7 +8,7 @@ $xml->load("books.xml");
 
 // Retrieve the GET request values
 $language = $_GET["language"];
-$catagory = $_GET["catagory"];
+$category = $_GET["category"];
 
 // Remove the non-matching languages
 if ($language != null) {
@@ -21,12 +21,12 @@ if ($language != null) {
     }
 }
 
-// Remove the non-matching catagories
-if ($catagory != null) {
-    $catagories = $xml->getElementsByTagName("book");
-    for ($i = $catagories->count() - 1; $i >= 0; $i--) {
-        $node = $catagories->item($i);
-        if ($node->getAttribute("catagory") != $catagory) {
+// Remove the non-matching categories
+if ($category != null) {
+    $categories = $xml->getElementsByTagName("book");
+    for ($i = $categories->count() - 1; $i >= 0; $i--) {
+        $node = $categories->item($i);
+        if ($node->getAttribute("category") != $category) {
             $node->parentNode->removeChild($node);
         }
     }

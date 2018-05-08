@@ -216,8 +216,8 @@ if (!array_key_exists($_SESSION["username"], $users)) {
             </select>
           </div>
 		  <div class="form-group col-6 col-md-4 col-lg-3">
-            <label for="catagoryFilter">Catagory</label>
-            <select required class="form-control" id="catagoryFilter" name="catagory">
+            <label for="categoryFilter">Category</label>
+            <select required class="form-control" id="categoryFilter" name="category">
               <option value="">- All -</option>
               <option value="Cooking">Cooking</option>
               <option value="Children">Children</option>
@@ -261,8 +261,8 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 			<option value="japanese">Japnese</option>
 		  </select>
 		<div class="form-group">
-          <label for="catagory">Catagory</label>
-          <select required class="form-control" id="catagory" name="catagory">
+          <label for="category">Category</label>
+          <select required class="form-control" id="category" name="category">
             <option value="Cooking">Cooking</option>
             <option value="Children">Children</option>
             <option value="Fiction">Fiction</option>
