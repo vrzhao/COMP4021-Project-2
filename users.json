@@ -6,12 +6,17 @@
     },
     "molly": {
         "firstname": "Molly",
-        "lastname": "Hi",
+        "lastname": "He",
         "password": "1234"
     },
     "lowjin": {
         "firstname": "Jin",
         "lastname": "Low",
         "password": "0000"
+    },
+    "localhost": {
+        "firstname": "local",
+        "lastname": "host",
+        "password": "a"
     }
 }

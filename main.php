@@ -169,7 +169,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
             <a class="nav-link" href="#user">User Settings</a>
           </li>
 		  <li class="nav-item">
-            <a class="nav-link" href="#signout">Signout</a>
+            <a class="nav-link" href="#signout">Sign Out</a>
           </li>
         </ul>
       </div>
