@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 
 // Check for the username session variable
@@ -203,7 +203,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 			  <option value="italian">Italian</option>
 			  <option value="french">French</option>
 			  <option value="korean">Korean</option>
-			  <option value="japanese">Japnese</option>
+			  <option value="japanese">Japanese</option>
             </select>
           </div>
 		  <div class="form-group col-6 col-md-4 col-lg-3">
@@ -249,7 +249,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 			<option value="italian">Italian</option>
 			<option value="french">French</option>
 			<option value="korean">Korean</option>
-			<option value="japanese">Japnese</option>
+			<option value="japanese">Japanese</option>
 		  </select>
 		<div class="form-group">
           <label for="category">Category</label>
@@ -291,7 +291,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 			<option value="italian">Italian</option>
 			<option value="french">French</option>
 			<option value="korean">Korean</option>
-			<option value="japanese">Japnese</option>
+			<option value="japanese">Japanese</option>
 		  </select>
 		<div class="form-group">
           <label for="category">Category</label>
