@@ -70,10 +70,14 @@ if (!array_key_exists($_SESSION["username"], $users)) {
                             html += "<div class='image'><img src='" + book.find("image").text() + "' class='w-75' alt='Image'></div>";
                         }
 
-                        html += "<div class='name'>" + book.find("name").text() + "</div>";
+                        html += "<div class='title'>" + book.find("title").text() + "</div>";
 
 						html += "<div class='author'>" + book.find("author").text() + "</div>";
-                        
+
+						html += "<div><a class='edit' href=#>edit</a></div>";
+
+						html += "<div><a class='delete' href=#>delete</a></div>";
+
                         html += "</div>";
 
                         html += "</div>";
@@ -86,6 +90,23 @@ if (!array_key_exists($_SESSION["username"], $users)) {
                     alert("Unknown error!");
                 });
         });
+
+		$("#listForm").on("edit", function() {
+			var query = $("#listForm").serialize();
+
+			$.get("edit.php", query, function(data) {
+				
+			});
+		});
+
+		$("#listForm").on("delete", function() {
+			var query = $("#listForm").serialize();
+
+			$.get("delete.php", query, function(data) {
+				
+			});
+		});
+
 
         $("#listForm select:first").trigger("change");
 
@@ -185,14 +206,13 @@ if (!array_key_exists($_SESSION["username"], $users)) {
             <label for="languageFilter">Language</label>
             <select required class="form-control" id="languageFilter" name="language">
               <option value="">- All -</option>
-			  <option>English</option>
-			  <option>Chinese</option>
-			  <option>German</option>
-			  <option>Italian</option>
-			  <option>French</option>
-			  <option>Spanish</option>
-			  <option>Korean</option>
-			  <option>Japnese</option>
+			  <option value="english">English</option>
+			  <option value="chinese">Chinese</option>
+			  <option value="german">German</option>
+			  <option value="italian">Italian</option>
+			  <option value="french">French</option>
+			  <option value="korean">Korean</option>
+			  <option value="japanese">Japnese</option>
             </select>
           </div>
 		  <div class="form-group col-6 col-md-4 col-lg-3">
@@ -232,14 +252,13 @@ if (!array_key_exists($_SESSION["username"], $users)) {
         <div class="form-group">
           <label for="language">Language</label>
           <select required class="form-control" id="language" name="language">
-			<option>English</option>
-			<option>Chinese</option>
-			<option>German</option>
-			<option>Italian</option>
-			<option>French</option>
-			<option>Spanish</option>
-			<option>Korean</option>
-			<option>Japnese</option>
+			<option value="english">English</option>
+			<option value="chinese">Chinese</option>
+			<option value="german">German</option>
+			<option value="italian">Italian</option>
+			<option value="french">French</option>
+			<option value="korean">Korean</option>
+			<option value="japanese">Japnese</option>
 		  </select>
 		<div class="form-group">
           <label for="catagory">Catagory</label>

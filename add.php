@@ -18,7 +18,7 @@ $catagory    = $_GET["catagory"];
 function validateFields() {
     global $xml, $title;
 
-    // Check if the name has been taken
+    // Check if the title has been taken
     $titles = $xml->getElementsByTagName("title");
     foreach ($titles as $node) {
         if ($node->nodeValue == trim($title)) {
@@ -29,7 +29,7 @@ function validateFields() {
     return null;
 }
 
-// Validate the two fields: national number and name
+// Validate the title
 $error = validateFields();
 
 
@@ -52,7 +52,7 @@ else {
     // Add the new book
     $book = $xml->createDocumentFragment();
     $book->appendXML("<book catagory=\"$catagory\"><title>$title</title><author>$author</author><image>$image</image></book>");
-    $target->appendChild($pokemon);
+    $target->appendChild($book);
 
     $xml->save("books.xml");
 

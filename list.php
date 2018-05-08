@@ -15,7 +15,7 @@ if ($language != null) {
     $languages = $xml->getElementsByTagName("language");
     for ($i = $languages->count() - 1; $i >= 0; $i--) {
         $node = $languages->item($i);
-        if ($node->getAttribute("lang") != $language) {
+        if ($node->getAttribute("language") != $language) {
             $node->parentNode->removeChild($node);
         }
     }
