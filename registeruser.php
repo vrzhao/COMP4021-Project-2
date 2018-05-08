@@ -13,6 +13,13 @@ $lastname = trim($_POST["lastname"]);
 $password = $_POST["password"];
 $confirm = $_POST["confirm"];
 
+// reCAPTCHA verification
+$response =  $_POST["g-recaptcha-response"];
+$secret = "6LdslVcUAAAAAC7HGIHBiLLhwySw5EK_o7Yaauy3";
+$url = "https://www.google.com/recaptcha/api/siteverify";
+$verify = file_get_contents($url."?secret=".$secret."&response=".$response);
+$result = json_decode($verify);
+
 // Check the username
 if (array_key_exists($username, $users)) {
     $output["error"] = "Duplicate username exists!";
@@ -27,6 +34,11 @@ elseif (empty($username) || empty($firstname) || empty($lastname) || empty($pass
 elseif ($password != $confirm) {
     $output["error"] = "Passwords do not match!";
 }
+
+// check recaptcha
+elseif (!$result->success) {
+    $output["error"] = "reCAPTCHA verification error!";
+} 
 
 // Add the user
 else {
