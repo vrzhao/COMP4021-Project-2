@@ -13,8 +13,8 @@ $list = $xml->getElementsByTagName("book");
 
 $nodeToRemove = null;
 foreach ($list as $domElement){
-	$attribute = $domElement->getAttribute("title");
-	if ($attribute == $title) {
+	$attribute = $domElement->getElementsByTagName("title");
+	if ($attribute->nodeValue == $title) {
 		$nodeToRemove = $domElement;
 	}
 }
@@ -22,4 +22,5 @@ foreach ($list as $domElement){
 $xml->removeChild($nodeToRemove);
 
 echo $xml->saveXML();
+
 ?>

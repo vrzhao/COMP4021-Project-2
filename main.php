@@ -52,6 +52,10 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 				break;
 			case "#edit":
 				$("#editPage").show();
+				break;
+			case "#delete":
+				$("#deletePage").show();
+				break;
             }
         });
 
@@ -78,11 +82,11 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 
 						html += "<div class='edit'>";
 
-						html += "<span><a class='edit' href=#edit>edit</a></span>";
+						html += "<span><a href='#edit'>Edit</a></span>";
 
 						html += "		";
 
-						html += "<span><a class='delete' href=#delete>delete</a></span>";
+						html += "<span><a href='#delete'>Delete</a></span>";
 
 						html += "</div>";
 
@@ -97,7 +101,10 @@ if (!array_key_exists($_SESSION["username"], $users)) {
                 });
         });
 
-
+		$("#deleteForm").on("submit", function() {
+            $.get("delete.php")
+            window.location.hash = "#list";
+        });
 
         $("#listForm select:first").trigger("change");
 
@@ -228,7 +235,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
     <div id="addPage" class="container page pb-3" style="display: none">
       <h2>Adding a New Book</h2>
 
-      <!-- Add the form for a new Pokémon here -->
+      <!-- Add the form for a new book here -->
       <form id="addForm">
         <div class="form-group">
           <label for="author">Author</label>
@@ -266,45 +273,12 @@ if (!array_key_exists($_SESSION["username"], $users)) {
       </form>
     </div>
 
-	    <!-- This is the edit page -->
-    <div id="editPage" class="container page pb-3" style="display: none">
-      <h2>Editing an existing book</h2>
-
-      <!-- Add the form for a new Pokémon here -->
-      <form id="editForm">
-        <div class="form-group">
-          <label for="author">Author</label>
-          <input type="text" required class="form-control" id="author" name="author" placeholder="Enter author">
-        </div>
-        <div class="form-group">
-          <label for="title">Book Title</label>
-          <input type="text" required class="form-control" id="title" name="title" placeholder="Enter book title">
-        </div>
-        <div class="form-group">
-          <label for="imageAddress">Image address</label>
-          <input type="url" required class="form-control" id="imageAddress" name="imageAddress" placeholder="Enter image address">
-        </div>
-        <div class="form-group">
-          <label for="language">Language</label>
-          <select required class="form-control" id="language" name="language">
-			<option value="english">English</option>
-			<option value="chinese">Chinese</option>
-			<option value="german">German</option>
-			<option value="italian">Italian</option>
-			<option value="french">French</option>
-			<option value="korean">Korean</option>
-			<option value="japanese">Japanese</option>
-		  </select>
-		<div class="form-group">
-          <label for="category">Category</label>
-          <select required class="form-control" id="category" name="category">
-            <option value="Cooking">Cooking</option>
-            <option value="Children">Children</option>
-            <option value="Fiction">Fiction</option>
-            <option value="Non-Fiction">Non-Fiction</option>
-		  </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Edit the Book</button>
+	<!-- This is the delete page -->
+	<div id="deletePage" class="container page pb-3" style="display: none">
+      <h2>Are you sure you want to delete this book?</h2>
+      <form id="deleteForm">
+        <button type="submit" class="btn btn-primary">Yes</button>
+		<button type="button" class="btn btn-primary">No</button>
       </form>
     </div>
 </body>
