@@ -3,7 +3,7 @@
 if(isset($_POST["remember"]) && $_POST["remember"] == "usercheck" && !isset($_COOKIE["user_memory"])) {
     setcookie("user_memory", $_POST["username"], time()+31540000);
 }
-else{
+elseif(!isset($_POST["remember"])){
 	if(isset($_COOKIE["user_memory"])) {
 		setcookie("user_memory",'', time()-42000);
 	}
