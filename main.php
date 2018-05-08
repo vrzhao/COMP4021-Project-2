@@ -45,7 +45,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
                 $("#addPage").show();
                 break;
 			case "#user":
-				window.location = "profile.html";
+				window.location = "profile.php";
                 break;
 			case "#signout":
 				window.location = "signout.php";
@@ -178,7 +178,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
             <a class="nav-link" href="#add">Add Books</a>
           </li>
 		  <li class="nav-item">
-            <a class="nav-link" href="#user">User Settings</a>
+            <a class="nav-link" href="#user">Edit Profile</a>
           </li>
 		  <li class="nav-item">
             <a class="nav-link" href="#signout">Sign Out</a>
