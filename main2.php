@@ -334,8 +334,8 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
       <div class="row">
         <form id="deleteForm">
           <button type="submit" class="btn btn-primary">Yes</button>
-		      <button href="#list" class="btn btn-primary">No</button>
         </form>
+		<button onclick="window.location.hash = '#list';" class="btn btn-primary">No</button>
       </div>
     </div>
 
