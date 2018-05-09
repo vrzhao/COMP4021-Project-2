@@ -296,5 +296,48 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
 		<button href="#list" class="btn btn-primary">No</button>
       </form>
     </div>
+
+        <!-- This is the book editing page -->
+    <div id="editPage" class="container page pb-3" style="display: none">
+      <h2>Editing Book Details</h2>
+
+      <!-- Edit book details form here -->
+      <form id="editForm">
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" required class="form-control" id="author" name="author" placeholder="Enter new author">
+        </div>
+        <div class="form-group">
+          <label for="title">Book Title</label>
+          <input type="text" required class="form-control" id="title" name="title" placeholder="Enter new book title">
+        </div>
+        <div class="form-group">
+          <label for="imageAddress">Image address</label>
+          <input type="url" required class="form-control" id="imageAddress" name="imageAddress" placeholder="Enter new image address">
+        </div>
+        <div class="form-group">
+          <label for="language">Language</label>
+          <select required class="form-control" id="language" name="language">
+			<option value="english">English</option>
+			<option value="chinese">Chinese</option>
+			<option value="german">German</option>
+			<option value="italian">Italian</option>
+			<option value="french">French</option>
+			<option value="korean">Korean</option>
+			<option value="japanese">Japanese</option>
+		  </select>
+		</div>
+		<div class="form-group">
+          <label for="category">Category</label>
+          <select required class="form-control" id="category" name="category">
+            <option value="Cooking">Cooking</option>
+            <option value="Children">Children</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+		  </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Edited Details</button>
+      </form>
+    </div>
 </body>
 </html>
