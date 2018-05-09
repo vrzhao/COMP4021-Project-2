@@ -2,21 +2,33 @@
     "vincent": {
         "firstname": "Vincent",
         "lastname": "Zhao",
-        "password": "xxxx"
+        "password": "xxxx",
+        "email": "vincent@email.xyz",
+        "company": "hkust",
+        "image": "images\/default_profile.png"
     },
     "molly": {
         "firstname": "Molly",
         "lastname": "He",
-        "password": "1234"
+        "password": "1234",
+        "email": "molly@email.xyz",
+        "company": "hkust",
+        "image": "images\/default_profile.png"
     },
     "lowjin": {
         "firstname": "Jin",
         "lastname": "Low",
-        "password": "0000"
+        "password": "0000",
+        "email": "lowjin@email.xyz",
+        "company": "hkust",
+        "image": "images\/default_profile.png"
     },
     "localhost": {
         "firstname": "local",
         "lastname": "host",
-        "password": "a"
+        "password": "a",
+        "email": "localhost@email.xyz",
+        "company": "hkust",
+        "image": "images\/default_profile.png"
     }
 }
