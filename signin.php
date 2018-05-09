@@ -31,7 +31,7 @@ if (isset($_SESSION["username"]) && isset($_COOKIE["user_memory"])) {
                     $("#signinError").show();
                 }
                 else
-                    window.location = "main.php";
+                    window.location = "main2.php";
             }, "json");
 
             return false;
