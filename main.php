@@ -45,30 +45,33 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
             $(".page").hide();
 
             switch (page) {
-            case "#list":
+              case "#list":
                 $("#listPage").show();
                 break;
-            case "#add":
+              case "#add":
                 $("#addPage").show();
                 break;
-			case "#user":
-				window.location = "profile.php";
+              case "#user":
+                window.location = "profile.php";
                 break;
-			case "#signout":
-				window.location = "signout.php";
-				break;
-			case "#edit":
-				$("#editPage").show();
-				break;
-			case "#delete":
-				$("#deletePage").show();
-				break;
+              case "#signout":
+                window.location = "signout.php";
+                break;
+              case "#edit":
+                $("#editPage").show();
+                break;
+              case "#delete":
+                //referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+                //document.getElementById("demo");
+                $("#deletePage").show();
+                break;
             }
-        });
+          });
 
         $(window).trigger("hashchange");
 
         $("#listForm select").on("change", function() {
+
             var query = $("#listForm").serialize();
 
             $.get("list.php", query, function(data) {
@@ -85,17 +88,17 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
 
                         html += "<div class='title'>" + book.find("title").text() + "</div>";
 
-						html += "<div class='author'>" + book.find("author").text() + "</div>";
+                        html += "<div class='author'>" + book.find("author").text() + "</div>";
 
-						html += "<div class='edit'>";
+            						html += "<div class='edit'>";
 
-						html += "<span><a href='#edit'>Edit</a></span>";
+            						html += "<span><a href='#edit'>Edit</a></span>";
 
-						html += "		";
+            						html += "		";
 
-						html += "<span><a href='#delete'>Delete</a></span>";
+            						html += "<span><a href='#delete'>Delete</a></span>";
 
-						html += "</div>";
+            						html += "</div>";
 
                         html += "</div>";
                     });
@@ -109,8 +112,30 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
         });
 
 		$("#deleteForm").on("submit", function() {
-            $.get("delete.php")
-            window.location.hash = "#list";
+			$.get("delete.php", {title: $titletext} , function(data) {
+				if ($(data).find("error").length) {
+                    alert($(data).find("error").text());
+                }
+				else
+					window.location = "main.php";
+			})
+                .fail(function() {
+                    alert("Unknown error!");
+                });
+        });
+
+		$("#editForm").on("submit", function() {
+			var query = $("#editForm").serialize() + '&oldTitle=' + $titletext;
+			$.get("edit.php", query, function(data) {
+				if ($(data).find("error").length) {
+                    alert($(data).find("error").text());
+                }
+				else
+          window.location = "main.php";
+			})
+                .fail(function() {
+                    alert("Unknown error!");
+                });
         });
 
         $("#listForm select:first").trigger("change");
@@ -137,6 +162,46 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
         });
 
     });
+
+    $(document).click(function(event) {
+        if ($(event.target).text()=="Delete") {
+          $titletext = $(event.target).parent().parent().parent().children().eq(1).text();
+          $authortext = $(event.target).parent().parent().parent().children().eq(2).text();
+          console.log($titletext);
+          console.log($authortext);
+
+          $("#deleteBookTitle").text("Title: "+$titletext);
+          $("#deleteBookAuthor").text("Author: "+$authortext);
+        }
+        else if ($(event.target).text()=="Edit") {
+          $parent = $titletext = $(event.target).parent().parent().parent();
+          $titletext = $(event.target).parent().parent().parent().children().eq(1).text();
+          $authortext = $(event.target).parent().parent().parent().children().eq(2).text();
+          $imglink = $(event.target).parent().parent().parent().children().eq(0).children('img').attr('src');
+          //console.log($parent);
+          //console.log($titletext);
+          //console.log($authortext);
+
+          $category = $("#categoryFilter option:selected").val();
+          $language = $("#languageFilter option:selected").val();
+          console.log($category);
+          console.log($language);
+          if ($category != "") {
+            $("#editcategory").val($category);
+          }
+
+          if ($language != "") {
+            $("#editlanguage").val($language);
+          }
+
+          // autofill old data
+          $("#editauthor").val($authortext);
+          $("#edittitle").val($titletext);
+          $("#editimageaddress").val($imglink);
+          
+        }
+    });
+
     </script>
     <style>
     .navbar {
@@ -177,9 +242,6 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
         border-radius: 50%;
         margin: auto;
       }
-	.container #deleteForm {
-		text-align: center;
-	}
     </style>
 </head>
 <body>
@@ -266,38 +328,46 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
         <div class="form-group">
           <label for="language">Language</label>
           <select required class="form-control" id="language" name="language">
-			<option value="english">English</option>
-			<option value="chinese">Chinese</option>
-			<option value="german">German</option>
-			<option value="italian">Italian</option>
-			<option value="french">French</option>
-			<option value="korean">Korean</option>
-			<option value="japanese">Japanese</option>
-		  </select>
-		</div>
-		<div class="form-group">
+           <option value="english">English</option>
+           <option value="chinese">Chinese</option>
+           <option value="german">German</option>
+           <option value="italian">Italian</option>
+           <option value="french">French</option>
+           <option value="korean">Korean</option>
+           <option value="japanese">Japanese</option>
+         </select>
+         <div class="form-group">
           <label for="category">Category</label>
           <select required class="form-control" id="category" name="category">
             <option value="Cooking">Cooking</option>
             <option value="Children">Children</option>
             <option value="Fiction">Fiction</option>
             <option value="Non-Fiction">Non-Fiction</option>
-		  </select>
+          </select>
         </div>
         <button type="submit" class="btn btn-primary">Add the Book</button>
       </form>
     </div>
+  </div>
 
-	<!-- This is the delete page -->
-	<div id="deletePage" class="container page pb-3" style="display: none">
-      <h2>Are you sure you want to delete this book?</h2>
-      <form id="deleteForm">
-        <button type="submit" class="btn btn-primary">Yes</button>
-		<button href="#list" class="btn btn-primary">No</button>
-      </form>
+    <!-- This is the delete page -->
+    <div id="deletePage" class="container page pb-3" style="display: none">
+      <h2 id="deleteMessage">Are you sure you want to delete this book?</h2>
+      <div class="row">
+        <h5 id="deleteBookTitle">Title: </h6>
+      </div>
+      <div class="row">
+        <h5 id="deleteBookAuthor">Author: </h6>
+      </div>
+      <div class="row">
+        <form id="deleteForm">
+          <button type="submit" class="btn btn-primary">Yes</button>
+        </form>
+		<button onclick="window.location.hash = '#list';" class="btn btn-primary">No</button>
+      </div>
     </div>
 
-        <!-- This is the book editing page -->
+    <!-- This is the book editing page -->
     <div id="editPage" class="container page pb-3" style="display: none">
       <h2>Editing Book Details</h2>
 
@@ -305,39 +375,40 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
       <form id="editForm">
         <div class="form-group">
           <label for="author">Author</label>
-          <input type="text" required class="form-control" id="author" name="author" placeholder="Enter new author">
+          <input type="text" required class="form-control" id="editauthor" name="editauthor" placeholder="Enter new author">
         </div>
         <div class="form-group">
           <label for="title">Book Title</label>
-          <input type="text" required class="form-control" id="title" name="title" placeholder="Enter new book title">
+          <input type="text" required class="form-control" id="edittitle" name="edittitle" placeholder="Enter new book title">
         </div>
         <div class="form-group">
           <label for="imageAddress">Image address</label>
-          <input type="url" required class="form-control" id="imageAddress" name="imageAddress" placeholder="Enter new image address">
+          <input type="url" required class="form-control" id="editimageaddress" name="editimageaddress" placeholder="Enter new image address">
         </div>
         <div class="form-group">
           <label for="language">Language</label>
-          <select required class="form-control" id="language" name="language">
-			<option value="english">English</option>
-			<option value="chinese">Chinese</option>
-			<option value="german">German</option>
-			<option value="italian">Italian</option>
-			<option value="french">French</option>
-			<option value="korean">Korean</option>
-			<option value="japanese">Japanese</option>
-		  </select>
-		</div>
-		<div class="form-group">
+          <select required class="form-control" id="editlanguage" name="editlanguage">
+      <option value="english">English</option>
+      <option value="chinese">Chinese</option>
+      <option value="german">German</option>
+      <option value="italian">Italian</option>
+      <option value="french">French</option>
+      <option value="korean">Korean</option>
+      <option value="japanese">Japanese</option>
+      </select>
+    </div>
+    <div class="form-group">
           <label for="category">Category</label>
-          <select required class="form-control" id="category" name="category">
+          <select required class="form-control" id="editcategory" name="editcategory">
             <option value="Cooking">Cooking</option>
             <option value="Children">Children</option>
             <option value="Fiction">Fiction</option>
             <option value="Non-Fiction">Non-Fiction</option>
-		  </select>
+      </select>
         </div>
         <button type="submit" class="btn btn-primary">Save Edited Details</button>
       </form>
+	  <button onclick="window.location.hash = '#list';" class="btn btn-primary">Cancel</button>
     </div>
 </body>
 </html>
