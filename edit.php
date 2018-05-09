@@ -16,7 +16,7 @@ $language    = $_GET["editlanguage"];
 $title       = $_GET["edittitle"];
 $image       = $_GET["editimageaddress"];
 $author      = $_GET["editauthor"];
-$category    = $_GET["editcategory"];
+$category    = $_GET["editcategory"];z
 
 function validateFields() {
     global $xml, $title;
@@ -24,7 +24,7 @@ function validateFields() {
     // Check if the title has been taken
     $titles = $xml->getElementsByTagName("title");
     foreach ($titles as $node) {
-        if ($node->nodeValue == trim($title) &&  $node->nodeValue != trim($oldTitle)) {
+        if ($node->nodeValue == trim($title) &&  $node->nodeValue != $oldTitle) {
             return "Name already exists!";
         }
     }
