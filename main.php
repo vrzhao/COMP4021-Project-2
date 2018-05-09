@@ -280,7 +280,7 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
 
 	<!-- This is the delete page -->
 	<div id="deletePage" class="container page pb-3" style="display: none">
-      <h2>Enter the name of the book you want to delete</h2>
+      <h2>Enter the title of the book you want to delete</h2>
       <form id="deleteForm">
 		<div class="form-group">
           <label for="title">Title</label>
