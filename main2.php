@@ -110,9 +110,19 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
                 });
         });
 
-		    $("#deleteForm").on("submit", function() {
-            $.get("delete.php")
-            window.location.hash = "#list";
+		$("#deleteForm").on("submit", function() {
+            var query = $titletext.serialize();
+
+            $.get("delete.php", query, function(data) {
+                if ($(data).find("error").length) {
+                    alert($(data).find("error").text());
+                }
+                else
+                    window.location.hash = "#list";
+            })
+                .fail(function() {
+                    alert("Unknown error!");
+                });
         });
 
         $("#listForm select:first").trigger("change");
