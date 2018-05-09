@@ -35,15 +35,15 @@ if ($error != True) {
 else {
 	$books = $xml->getElementsByTagName("book");
     foreach ($books as $book) {
-        if ($book[0]->firstChild->nodeValue == $title) {
+        if ($book->firstChild->nodeValue == $title) {
             $target = $book;
             break;
         }
     }
 
-	$xml->removeChild($book);
+	$book->parentNode->removeChild($book);
 
-	$xml->saveXML("books.xml");
+	$xml->save("books.xml");
 
     // Show success
     echo "<success/>";
