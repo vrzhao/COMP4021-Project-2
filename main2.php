@@ -123,6 +123,20 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
                 });
         });
 
+		$("#editForm").on("submit", function() {
+			var query = $("#editForm").serialize() + '&oldTitle=' + $titletext;
+			$.get("edit.php", query, function(data) {
+				if ($(data).find("error").length) {
+                    alert($(data).find("error").text());
+                }
+				else
+					window.location.hash = "#list";
+			})
+                .fail(function() {
+                    alert("Unknown error!");
+                });
+        });
+
         $("#listForm select:first").trigger("change");
 
         $("#addForm").on("submit", function() {
@@ -380,6 +394,7 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
         </div>
         <button type="submit" class="btn btn-primary">Save Edited Details</button>
       </form>
+	  <button onclick="window.location.hash = '#list';" class="btn btn-primary">Cancel</button>
     </div>
 </body>
 </html>

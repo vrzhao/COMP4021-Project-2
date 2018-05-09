@@ -41,7 +41,7 @@ else {
         }
     }
 
-	$book->parentNode->removeChild($book);
+	$target->parentNode->removeChild($book);
 
 	$xml->save("books.xml");
 

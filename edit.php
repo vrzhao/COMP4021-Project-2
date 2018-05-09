@@ -9,11 +9,14 @@ $xml->preserveWhiteSpace = false; // remove whitespace nodes
 $xml->load("books.xml");
 
 // Retrieve the GET request values
-$language    = $_GET["language"];
-$title       = $_GET["title"];
-$image       = $_GET["imageAddress"];
-$author      = $_GET["author"];
-$category    = $_GET["category"];
+
+$oldTitle    = $_GET["oldTitle"];
+
+$language    = $_GET["editlanguage"];
+$title       = $_GET["edittitle"];
+$image       = $_GET["editimageaddress"];
+$author      = $_GET["editauthor"];
+$category    = $_GET["editcategory"];
 
 function validateFields() {
     global $xml, $title;
@@ -32,31 +35,42 @@ function validateFields() {
 // Validate the title
 $error = validateFields();
 
-// Show the error or add the new pokemon
+// Show the error or edit the book
 if ($error != null) {
     // Show the error
     echo "<error>" . $error . "</error>";
 }
 else {
-    // Get the correct generation
-    $target = null;
-    $generations = $xml->getElementsByTagName("generation");
-    foreach ($generations as $node) {
-        if ($node->getAttribute("num") == $generation) {
-            $target = $node;
+	// delete the old book
+	$removeTarget = null;
+	$removeBooks = $xml->getElementsByTagName("book");
+    foreach ($removeBooks as $removeBook) {
+        if ($removeBook->firstChild->nodeValue == trim($oldTitle)) {
+            $removeTarget = $removeBook;
             break;
         }
     }
 
-    // Add the new Pokemon
-    $pokemon = $xml->createDocumentFragment();
-    $typeNode = "<types>";
-    foreach ($types as $type) $typeNode .= "<type>$type</type>";
-    $typeNode .= "</types>";
-    $pokemon->appendXML("<pokemon num=\"$number\"><name>$name</name><image>$image</image>$typeNode</pokemon>");
-    $target->appendChild($pokemon);
+	if ($removeTarget != null) {
+		$removeTarget->parentNode->removeChild($removeTarget);
+	}
 
-    $xml->save("pokemon.xml");
+	// add in the new one
+    $addTarget = null;
+    $addLanguages = $xml->getElementsByTagName("language");
+    foreach ($addLanguages as $node) {
+        if ($node->getAttribute("language") == $language) {
+            $addTarget = $node;
+            break;
+        }
+    }
+
+    // Add the new book
+    $addBook = $xml->createDocumentFragment();
+    $addBook->appendXML("<book category=\"$category\"><title>$title</title><author>$author</author><image>$image</image></book>");
+    $addTarget->appendChild($addBook);
+
+    $xml->save("books.xml");
 
     // Show success
     echo "<success/>";
