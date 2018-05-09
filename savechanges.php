@@ -35,10 +35,30 @@ elseif ($password != $confirm) {
 
 // Add the user
 else {
+
     // change username only if it's been modified
     if ($username != $oldusername) {
         $users[$username] = $users[$oldusername];
         unset($users[$oldusername]);
+    }
+
+    // FILE UPLOAD, ignore if no file upload
+    if (file_exists($_FILES["imgfile"]["tmp_name"])) {
+        if ($_FILES && 
+            is_uploaded_file($_FILES["imgfile"]["tmp_name"])) {
+            if (!move_uploaded_file(
+                    $_FILES["imgfile"]["tmp_name"],
+                    "images/".$_FILES["imgfile"]["name"]
+                )) {
+                $output["error"] = "Failed to move uploaded file successfully."; 
+            }
+
+            // ADD TO USER JSON
+            $users[$username]["image"] = "images/".$_FILES["imgfile"]["name"];
+        }
+        else {
+            $output["error"] = "File is not properly uploaded.";
+        }
     }
 
     // Add the user to the JSON object and save it

@@ -16,6 +16,13 @@ if (!array_key_exists($_SESSION["username"], $users)) {
     header("Location: signin.php");
     exit;
 }
+
+$username = $_SESSION["username"];
+$profile_image = "images/default_profile.png";
+if (array_key_exists("image", $users[$username]) && file_exists($users[$username]["image"])) {
+  $profile_image = $users[$username]["image"];
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -168,6 +175,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
 
     #profilepic {
         border-radius: 50%;
+        margin: auto;
       }
     </style>
 </head>
@@ -175,7 +183,7 @@ if (!array_key_exists($_SESSION["username"], $users)) {
     <!-- Put your navbar here -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
-        <img id="profilepic" src="images/default_profile.png" alt="">
+        <img height="80" width="80" id="profilepic" src="<?php echo $profile_image;?>" alt="">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
