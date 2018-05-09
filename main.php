@@ -177,6 +177,9 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
         border-radius: 50%;
         margin: auto;
       }
+	.container #deleteForm {
+		text-align: center;
+	}
     </style>
 </head>
 <body>
@@ -271,6 +274,7 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
 			<option value="korean">Korean</option>
 			<option value="japanese">Japanese</option>
 		  </select>
+		</div>
 		<div class="form-group">
           <label for="category">Category</label>
           <select required class="form-control" id="category" name="category">
@@ -289,7 +293,7 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
       <h2>Are you sure you want to delete this book?</h2>
       <form id="deleteForm">
         <button type="submit" class="btn btn-primary">Yes</button>
-		<button type="button" class="btn btn-primary">No</button>
+		<button href="#list" class="btn btn-primary">No</button>
       </form>
     </div>
 </body>

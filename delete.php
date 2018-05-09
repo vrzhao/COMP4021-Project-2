@@ -22,5 +22,4 @@ foreach ($list as $domElement){
 $xml->removeChild($nodeToRemove);
 
 echo $xml->saveXML();
-
 ?>
