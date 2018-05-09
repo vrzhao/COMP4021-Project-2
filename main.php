@@ -87,16 +87,6 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
 
 						html += "<div class='author'>" + book.find("author").text() + "</div>";
 
-						html += "<div class='edit'>";
-
-						html += "<span><a href='#edit'>Edit</a></span>";
-
-						html += "		";
-
-						html += "<span><a href='#delete'>Delete</a></span>";
-
-						html += "</div>";
-
                         html += "</div>";
                     });
                 });
@@ -109,7 +99,11 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
         });
 
 		$("#deleteForm").on("submit", function() {
-            $.get("delete.php")
+			var query = $("#deleteForm").serialize();
+            $.get("delete.php", query)
+				.fail(function() {
+                    alert("Unknown error!");
+                });
             window.location.hash = "#list";
         });
 
@@ -169,17 +163,10 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
         font-size: 90%; 
         font-weight: bold;
     }
-	.book .edit{
-		text-align: center;
-    }
-
     #profilepic {
         border-radius: 50%;
         margin: auto;
       }
-	.container #deleteForm {
-		text-align: center;
-	}
     </style>
 </head>
 <body>
@@ -199,6 +186,9 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
           </li>            
           <li class="nav-item">
             <a class="nav-link" href="#add">Add Books</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="#delete">Delete Books</a>
           </li>
 		  <li class="nav-item">
             <a class="nav-link" href="#user">Edit Profile</a>
@@ -290,10 +280,13 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
 
 	<!-- This is the delete page -->
 	<div id="deletePage" class="container page pb-3" style="display: none">
-      <h2>Are you sure you want to delete this book?</h2>
+      <h2>Enter the name of the book you want to delete</h2>
       <form id="deleteForm">
+		<div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" required class="form-control" id="title" name="title" placeholder="Enter book title">
+        </div>
         <button type="submit" class="btn btn-primary">Yes</button>
-		<button href="#list" class="btn btn-primary">No</button>
       </form>
     </div>
 </body>
