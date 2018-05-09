@@ -24,7 +24,7 @@ function validateFields() {
     // Check if the title has been taken
     $titles = $xml->getElementsByTagName("title");
     foreach ($titles as $node) {
-        if ($node->nodeValue == trim($title)) {
+        if ($node->nodeValue == trim($title) &&  $node->nodeValue != trim($oldTitle)) {
             return "Name already exists!";
         }
     }
