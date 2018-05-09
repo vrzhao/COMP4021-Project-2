@@ -111,15 +111,13 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
         });
 
 		$("#deleteForm").on("submit", function() {
-            var query = $titletext.serialize();
-
-            $.get("delete.php", query, function(data) {
-                if ($(data).find("error").length) {
+			$.get("delete.php", {title: $titletext} , function(data) {
+				if ($(data).find("error").length) {
                     alert($(data).find("error").text());
                 }
-                else
-                    window.location.hash = "#list";
-            })
+				else
+					window.location.hash = "#list";
+			})
                 .fail(function() {
                     alert("Unknown error!");
                 });
@@ -324,7 +322,7 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
       <div class="row">
         <form id="deleteForm">
           <button type="submit" class="btn btn-primary">Yes</button>
-          <button type="button" class="btn btn-primary">No</button>
+		  <button href="#list" class="btn btn-primary">No</button>
         </form>
       </div>
     </div>

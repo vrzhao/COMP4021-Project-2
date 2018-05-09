@@ -9,17 +9,43 @@ $xml->load("books.xml");
 // Retrieve the GET request values
 $title = $_GET["title"];
 
-$list = $xml->getElementsByTagName("book");
 
-$nodeToRemove = null;
-foreach ($list as $domElement){
-	$attribute = $domElement->getElementsByTagName("title");
-	if ($attribute->nodeValue == $title) {
-		$nodeToRemove = $domElement;
-	}
+function validateFields() {
+    global $xml, $title;
+
+    // Check if the title exists
+    $titles = $xml->getElementsByTagName("title");
+    foreach ($titles as $node) {
+        if ($node->nodeValue == trim($title)) {
+            return null;
+        }
+    }
+
+    return "Book doesn't exist!";
 }
 
-$xml->removeChild($nodeToRemove);
+// Validate the title
+$error = validateFields();
 
-echo $xml->saveXML();
+// Show the error or delete the book
+if ($error != null) {
+    // Show the error
+    echo "<error>" . $error . "</error>";
+}
+else {
+	$books = $xml->getElementsByTagName("book");
+    foreach ($books as $book) {
+        if ($book->firstChild->nodeValue == trim($title)) {
+            $target = $book;
+            break;
+        }
+    }
+
+	$book->parentNode->removeChild($book);
+
+	$xml->save("books.xml");
+
+    // Show success
+    echo "<success/>";
+}
 ?>
