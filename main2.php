@@ -150,8 +150,6 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
 
     $(document).click(function(event) {
         if ($(event.target).text()=="Delete") {
-                  console.log($(event.target).text());
-
           $titletext = $(event.target).parent().parent().parent().children().eq(1).text();
           $authortext = $(event.target).parent().parent().parent().children().eq(2).text();
           console.log($titletext);
@@ -159,6 +157,20 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
 
           $("#deleteBookTitle").text("Title: "+$titletext);
           $("#deleteBookAuthor").text("Author: "+$authortext);
+        }
+        else if ($(event.target).text()=="Edit") {
+          $parent = $titletext = $(event.target).parent().parent().parent();
+          $titletext = $(event.target).parent().parent().parent().children().eq(1).text();
+          $authortext = $(event.target).parent().parent().parent().children().eq(2).text();
+          $imglink = $(event.target).parent().parent().parent().children().eq(0).children('img').attr('src');
+          //console.log($parent);
+          //console.log($titletext);
+          //console.log($authortext);
+
+          // autofill old data
+          $("#editauthor").val($authortext);
+          $("#edittitle").val($titletext);
+          $("#editimageaddress").val($imglink);
         }
     });
 
@@ -322,9 +334,52 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
       <div class="row">
         <form id="deleteForm">
           <button type="submit" class="btn btn-primary">Yes</button>
-		  <button href="#list" class="btn btn-primary">No</button>
+		      <button href="#list" class="btn btn-primary">No</button>
         </form>
       </div>
+    </div>
+
+    <!-- This is the book editing page -->
+    <div id="editPage" class="container page pb-3" style="display: none">
+      <h2>Editing Book Details</h2>
+
+      <!-- Edit book details form here -->
+      <form id="editForm">
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" required class="form-control" id="editauthor" name="editauthor" placeholder="Enter new author">
+        </div>
+        <div class="form-group">
+          <label for="title">Book Title</label>
+          <input type="text" required class="form-control" id="edittitle" name="edittitle" placeholder="Enter new book title">
+        </div>
+        <div class="form-group">
+          <label for="imageAddress">Image address</label>
+          <input type="url" required class="form-control" id="editimageaddress" name="editimageaddress" placeholder="Enter new image address">
+        </div>
+        <div class="form-group">
+          <label for="language">Language</label>
+          <select required class="form-control" id="editlanguage" name="editlanguage">
+      <option value="english">English</option>
+      <option value="chinese">Chinese</option>
+      <option value="german">German</option>
+      <option value="italian">Italian</option>
+      <option value="french">French</option>
+      <option value="korean">Korean</option>
+      <option value="japanese">Japanese</option>
+      </select>
+    </div>
+    <div class="form-group">
+          <label for="category">Category</label>
+          <select required class="form-control" id="editcategory" name="editcategory">
+            <option value="Cooking">Cooking</option>
+            <option value="Children">Children</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+      </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Edited Details</button>
+      </form>
     </div>
 </body>
 </html>
