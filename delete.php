@@ -17,7 +17,7 @@ function validateFields() {
     $titles = $xml->getElementsByTagName("title");
     foreach ($titles as $node) {
         if ($node->nodeValue == trim($title)) {
-            return True;
+            return null;
         }
     }
 
@@ -28,14 +28,14 @@ function validateFields() {
 $error = validateFields();
 
 // Show the error or delete the book
-if ($error != True) {
+if ($error != null) {
     // Show the error
     echo "<error>" . $error . "</error>";
 }
 else {
 	$books = $xml->getElementsByTagName("book");
     foreach ($books as $book) {
-        if ($book->firstChild->nodeValue == $title) {
+        if ($book->firstChild->nodeValue == trim($title)) {
             $target = $book;
             break;
         }

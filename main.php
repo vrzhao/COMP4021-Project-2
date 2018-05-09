@@ -100,11 +100,17 @@ if (array_key_exists("image", $users[$username]) && file_exists($users[$username
 
 		$("#deleteForm").on("submit", function() {
 			var query = $("#deleteForm").serialize();
-            $.get("delete.php", query)
+
+            $.get("delete.php", query, function(data) {
+                if ($(data).find("error").length) {
+                    alert($(data).find("error").text());
+                }
+                else
+                    window.location.hash = "#list";
+            })
 				.fail(function() {
                     alert("Unknown error!");
                 });
-            window.location.hash = "#list";
         });
 
         $("#listForm select:first").trigger("change");
