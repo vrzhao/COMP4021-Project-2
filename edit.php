@@ -16,20 +16,12 @@ $author      = $_GET["author"];
 $category    = $_GET["category"];
 
 function validateFields() {
-    global $xml, $number, $name;
+    global $xml, $title;
 
-    // Check if the number has been taken
-    $pokemons = $xml->getElementsByTagName("pokemon");
-    foreach ($pokemons as $node) {
-        if (intval($node->getAttribute("num")) == intval($number)) {
-            return "National number already exists!";
-        }
-    }
-
-    // Check if the name has been taken
-    $names = $xml->getElementsByTagName("name");
-    foreach ($names as $node) {
-        if ($node->nodeValue == trim($name)) {
+    // Check if the title has been taken
+    $titles = $xml->getElementsByTagName("title");
+    foreach ($titles as $node) {
+        if ($node->nodeValue == trim($title)) {
             return "Name already exists!";
         }
     }
@@ -37,7 +29,7 @@ function validateFields() {
     return null;
 }
 
-// Validate the two fields: national number and name
+// Validate the title
 $error = validateFields();
 
 // Show the error or add the new pokemon
